@@ -16,6 +16,9 @@
   GEOBASE AGAIN.
 */
 
+:- consult('compat.pl').
+
+:- use_module(library(porter_stem)). %tokenize_atom
 
 :- consult('tdoms.pl').
 
@@ -23,6 +26,7 @@
  The Language Tables - These are the database predicates
  which define the language we will use to query Geobase.
 ***********************************************************/
+
 
 :- dynamic([state/10, city/4, river/3, border/3,highlow/6,mountain/4,lake/3,road/2]).
 :- dynamic([schema/3,relop/2,assoc/2,synonym/2,ignore/1,minn/1,maxx/1,size/2,unit/2]).

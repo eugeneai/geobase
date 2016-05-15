@@ -35,9 +35,12 @@
   it.  The number of solutions are also reported here.
 *************************************************************************/
 
-  loop(STR):-	STR \= '',
-  		scan(STR,LIST),               /* Returns a list of words(symbols)           */
+loop(STR):-	STR \= "",
+                writeq(STR),nl,
+                atom_string(ATOM,STR),
+  		tokenize_atom(ATOM,LIST),               /* Returns a list of words(symbols)           */
 		filter(LIST,LIST1),           /* Removes punctuation and words to be ignored*/
+                write([LIST1,E,Q]),nl,
 		pars(LIST1,E,Q),              /* Parses queries                            */
 		findall(A,eval(Q,A),L),
 		unik(L,L1),
@@ -47,7 +50,7 @@
 		write_solutions(N),
 		fail.
 
-  loop(STR):-	STR \= "",readquery(L),loop(L).
+  loop(STR):-	STR \= '',readquery(L),loop(L).
 
   readquery(QUERY):-nl,nl,write("Query: "),readln(QUERY).
 
@@ -98,7 +101,7 @@
 *************************************************************************/
 
   error(LIST):-	write(">> "),member(Y,LIST),not(known_word(Y)),!,
-		write("Unknown word: ",Y),nl.
+		write(["Unknown word: ",Y]),nl.
 
   error(_):-	write("Sorry, the sentence can't be recognized").
 
@@ -378,25 +381,29 @@ geobase:-
 
   natlang:-
 	% makewindow(21,112,0,"",24,0,1,80),
-	write("ESC: Quit this menu -- Use arrow keys to select and hit RETURN to activate."),
+	%write("ESC: Quit this menu -- Use arrow keys to select and hit RETURN to activate."),
 	% makewindow(22,112,0,"",24,0,1,80),
-	write("Esc: Quit     F8: Last line    Ctrl S: Stop output    End: End of line"),
+	%write("Esc: Quit     F8: Last line    Ctrl S: Stop output    End: End of line"),
 	% makewindow(2,7,7,"GEOBASE: Natural language interface to U.S. geography",0,0,24,80),
 	mainmenu.
 
   mainmenu:-	repeat,
-		menu(8,49,14,6,
-		  [ "Tutorial",
-		    "DOS Shell",
-		    "Editor",
-		    "컴컴컴컴컴컴컴컴컴�",
-		    "Query the database",
-		    "컴컴컴컴컴컴컴컴컴�",
-		    "View the language",
-		    "Update the language"]," Main Menu ",1,CHOICE),
+		% menu(8,49,14,6,
+		%   [ "Tutorial",
+		%     "DOS Shell",
+		%     "Editor",
+		%     "==================",
+		%     "Query the database",
+		%     "==================",
+		%     "View the language",
+                                %     "Update the language"]," Main Menu ",1,CHOICE),
+          CHOICE=5,
 		proces(CHOICE),
-		CHOICE=0,!,
-		removewindow,removewindow.
+		CHOICE=0,
+                !
+                %,
+		%removewindow,removewindow
+                .
 
   proces(0):-write("\nAre you sure you want to quit? (y/n): "),readchar(T),T='y'.
   proces(1):-file_str("geobase.hlp",TXT),display(TXT),clearwindow,!.
