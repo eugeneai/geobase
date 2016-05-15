@@ -11,7 +11,7 @@
   Pressing Esc aborts menu selection and returns zero.
 
   The arguments to menu are:
-  
+
   menu(ROW,COL,WINDOWATTR,FRAMEATTR,STRINGLIST,HEADER,STARTCHOICE,SELECTION)
 
 	ROW and COL determines the position of the window
@@ -25,17 +25,11 @@
   Ex:	 menu(5,5,7,7,[this,is,a,test],"select word",0,CHOICE)
 
 ****************************************************************/
-/*                    remove comment to run  
+/*                    remove comment to run
 include "tdoms.pro"
 include "tpreds.pro"
 */
-PREDICATES
-  menu(ROW,COL,ATTR,ATTR,STRINGLIST,STRING,INTEGER,INTEGER)
-  menuinit(ROW,COL,ATTR,ATTR,STRINGLIST,STRING,ROW,COL)
-  menu1(SYMBOL,ROW,ATTR,STRINGLIST,ROW,COl,INTEGER)
-  menu2(KEY,STRINGLIST,ROW,ROW,ROW,SYMBOL)
 
-CLAUSES
   menu(ROW,COL,WATTR,FATTR,LIST,HEADER,STARTCHOICE,CHOICE) :-
 	menuinit(ROW,COL,WATTR,FATTR,LIST,HEADER,NOOFROW,LEN),
 	ST1=STARTCHOICE-1,max(0,ST1,ST2),MAX=NOOFROW-1,min(ST2,MAX,STARTROW),
@@ -88,12 +82,7 @@ CLAUSES
 /* As menu but the window is not removed on return.		*/
 /****************************************************************/
 
-PREDICATES
-  nondeterm menu_repeat(ROW,COL,ATTR,ATTR,STRINGLIST,STRING,INTEGER,INTEGER)
-  nondeterm menu_repeat1(ROW,ATTR,STRINGLIST,ROW,COl,INTEGER)
-  nondeterm menu_repeat3(SYMBOL,ROW,ATTR,STRINGLIST,ROW,COl,INTEGER,INTEGER)
 
-CLAUSES
   menu_repeat(ROW,COL,WATTR,FATTR,LIST,HEADER,STARTCHOICE,CHOICE) :-
 	menuinit(ROW,COL,WATTR,FATTR,LIST,HEADER,NOOFROW,NOOFCOL),
 	ST1=STARTCHOICE-1,max(0,ST1,ST2),MAX=NOOFROW-1,min(ST2,MAX,STARTROW),
@@ -102,14 +91,13 @@ CLAUSES
   menu_repeat(_,_,_,_,_,_,_,_):-removewindow,fail.
 
 
-	
+
   menu_repeat1(STARTROW,WATTR,LIST,NOOFROW,NOOFCOL,C):-
 	menu1(cont,STARTROW,WATTR,LIST,NOOFROW,NOOFCOL,C1),
 	menu_repeat3(cont,STARTROW,WATTR,LIST,NOOFROW,NOOFCOL,C1,C).
-		
+
   menu_repeat3(_,_,_,_,_,_,C,C):-C<>0.
   menu_repeat3(cont,_,WATTR,LIST,NOOFROW,NOOFCOL,C1,C):-
 	C1<>0,
 	XX=C1-1,
 	menu_repeat1(XX,WATTR,LIST,NOOFROW,NOOFCOL,C).
-

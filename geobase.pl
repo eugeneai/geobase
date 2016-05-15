@@ -16,87 +16,54 @@
   GEOBASE AGAIN.
 */
 
-code=3000
 
-DOMAINS
-  ENT	= STRING	/* Names of entities			*/
-  ASSOC	= STRING	/* Names of associations		*/
-  RELOP	= STRING	/* gt, lt, eq for comparisons		*/
-  UNIT	= STRING	/* kilometers, citizens etc.		*/
-
-INCLUDE "tdoms.pro"
+:- consult('tdoms.pl').
 
 /**********************************************************
  The Language Tables - These are the database predicates
  which define the language we will use to query Geobase.
 ***********************************************************/
 
-DATABASE - language
-  schema(ENT,ASSOC,ENT)		/* Entity network: entity-assoc-entity */
-  entitysize(ENT,STRING)	/* This attribute tells which words can be
-				   user to query the size of the entity	 */
-  relop(STRINGLIST,STRING)		/* Example: relop([greater,than],gt] */
-  assoc(ASSOC,STRINGLIST)		/* Alternative assoc names */
-  synonym(STRING,ENT)		/* Synonyms for entities */
-  ignore(STRING)		/* Words to be ignored */
-  minn(STRING)			/* Words stating minimum */
-  maxx(STRING)			/* Words stating maximum */
-  size(STRING,STRING)		/* big, long, high .... */
-  unit(STRING,STRING)		/* Units for population, area ... */
+:- dynamic([state/10, city/4, river/3, border/3,highlow/6,mountain/4,lake/3,road/2]).
+:- dynamic([schema/3,relop/2,assoc/2,synonym/2,ignore/1,minn/1,maxx/1,size/2,unit/2]).
 
 
-/**************************************************************
-  The real database - These are the database predicates which
-  actually  maintain the information we will access.
-****************************************************************/
+% DATABASE - data
+% /*state(NAME,ABBREVIATION,CAPITAL,AREA,ADMIT,POPULATION,CITY,CITY,CITY,CITY */
+%   state(STRING,STRING,STRING,REAL,REAL,INTEGER,STRING,STRING,STRING,STRING)
 
-DATABASE - data
-/*state(NAME,ABBREVIATION,CAPITAL,AREA,ADMIT,POPULATION,CITY,CITY,CITY,CITY */
-  state(STRING,STRING,STRING,REAL,REAL,INTEGER,STRING,STRING,STRING,STRING)
+% /*city(STATE,ABBREVIATION,NAME,POPULATION) */
+%   city(STRING,STRING,STRING,REAL)
 
-/*city(STATE,ABBREVIATION,NAME,POPULATION) */
-  city(STRING,STRING,STRING,REAL)
+% /*river(NAME,LENGTH,STATESTRINGLIST */
+%   river(STRING,INTEGER,STRINGLIST)
 
-/*river(NAME,LENGTH,STATESTRINGLIST */
-  river(STRING,INTEGER,STRINGLIST)
+% /*border(STATE,ABBREVIATION,STATELIST) */
+%   border(STRING,STRING,STRINGLIST)
 
-/*border(STATE,ABBREVIATION,STATELIST) */
-  border(STRING,STRING,STRINGLIST)
+% /*highlow(STATE,ABBREVIATION,POINT,HEIGHT,POINT,HEIGHT) */
+%   highlow(STRING,STRING,STRING,INTEGER,STRING,INTEGER)
 
-/*highlow(STATE,ABBREVIATION,POINT,HEIGHT,POINT,HEIGHT) */
-  highlow(STRING,STRING,STRING,INTEGER,STRING,INTEGER)
+% /*mountain(STATE,ABBREVIATION,NAME,HEIGHT) */
+%   mountain(STRING,STRING,STRING,REAL)
 
-/*mountain(STATE,ABBREVIATION,NAME,HEIGHT) */
-  mountain(STRING,STRING,STRING,REAL)
+% /*lake(NAME,AREA,STATELIST) */
+%   lake(STRING,REAL,STRINGLIST)
 
-/*lake(NAME,AREA,STATELIST) */
-  lake(STRING,REAL,STRINGLIST)
+% /*road(NUMBER,STATELIST) */
+%   road(STRING,STRINGLIST)
 
-/*road(NUMBER,STATELIST) */
-  road(STRING,STRINGLIST)
-
-INCLUDE "tpreds.pro"
-INCLUDE "menu2.pro"
+:- consult('tpreds.pl').
+% :- consult('menu2.pl').
 
 
 /**************************************************************
 	Access to the database
 ****************************************************************/
 
-PREDICATES		/* membership of a list */
-  member(STRING,STRINGLIST)
 
-CLAUSES
-  member(X,[X|_]).
-  member(X,[_|L]):-member(X,L).
+:-consult('geobase_inc.pl'). /* Include parser + scanner + eval*/
 
-PREDICATES
-  db(ENT,ASSOC,ENT,STRING,STRING)
-  ent(ENT,STRING)
-
-INCLUDE "geobase.inc" /* Include parser + scanner + eval*/
-
-CLAUSES
 /*
   ent returns values for a given entity name. Ex. if called by
   ent(city,X)  X  is instantiated to cities.
@@ -165,6 +132,3 @@ CLAUSES
 
   db(E,in,continent,VAL,usa):-		ent(E,VAL).
   db(name,of,_,X,X):-			bound(X).
-
-
-

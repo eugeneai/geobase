@@ -6,14 +6,6 @@
   used in any system.
 *************************************************************************/
 
-PREDICATES
-  write_list(INTEGER,STRINGLIST)    /* Write the list separated by spaces */
-  write_list2(STRINGLIST)		             /* Display an answer */
-  append(STRINGLIST,STRINGLIST,STRINGLIST)	      /* Append two lists */
-  unik(STRINGLIST,STRINGLIST)		/* Eliminate duplicates in a list */
-  index(STRINGLIST,INTEGER,STRING)       /* Select an element from a list */
-
-CLAUSES
   index([X|_],1,X):- !.
   index([_|L],N,X):- N>1,N1=N-1,index(L,N1,X).
 
@@ -43,38 +35,7 @@ CLAUSES
   it.  The number of solutions are also reported here.
 *************************************************************************/
 
-DOMAINS
-/* Nine types of questions are recognized by the evaluator */
-  QUERY	=	q_e(ENT) ;
-		q_eaec(ENT,ASSOC,ENT,STRING) ;
-		q_eaq(ENT,ASSOC,ENT,QUERY) ;
-		q_sel(ENT,RELOP,ENT,REAL);
-		q_min(ENT,QUERY);
-		q_max(ENT,QUERY);
-		q_not(ENT,QUERY) ;
-		q_or(QUERY,QUERY) ;
-		q_and(QUERY,QUERY)
-
-PREDICATES
-/* Input-output */
-  loop(STRING)			/* Main loop */
-  readquery(STRING)
-  write_unit(STRING)		/* Write the unit for an entity */
-  write_solutions(INTEGER)	/* Write the number of solutions */
-
-/* Scanner */
-  scan(STRING,STRINGLIST)		/* Convert a string to a list of words */
-  filter(STRINGLIST,STRINGLIST)		/* Eliminate commas and periods	*/
-
-/* Parser */
-  pars(STRINGLIST,STRING,QUERY)
-
-/* Evaluation */
-  eval(QUERY,STRING)
-
-
-CLAUSES
-  loop(STR):-	STR >< "",
+  loop(STR):-	STR \= '',
   		scan(STR,LIST),               /* Returns a list of words(symbols)           */
 		filter(LIST,LIST1),           /* Removes punctuation and words to be ignored*/
 		pars(LIST1,E,Q),              /* Parses queries                            */
@@ -86,7 +47,7 @@ CLAUSES
 		write_solutions(N),
 		fail.
 
-  loop(STR):-	STR >< "",readquery(L),loop(L).
+  loop(STR):-	STR \= "",readquery(L),loop(L).
 
   readquery(QUERY):-nl,nl,write("Query: "),readln(QUERY).
 
@@ -114,14 +75,6 @@ CLAUSES
   ENTITY NAMES
 *************************************************************************/
 
-PREDICATES
-  entn(STRING,STRING)		/* Convert an entity to singular form */
-  entity(STRING)		/* Get all entities */
-  ent_synonym(STRING,STRING)	/* Synonyms for entities */
-  ent_name(STRING,STRING)	/* Convert between an entity
-				   name and an internal entity name */
-
-CLAUSES
   ent_synonym(E,ENT):-synonym(E,ENT).
   ent_synonym(E,E).
 
@@ -144,11 +97,6 @@ CLAUSES
   list which the system reports on.
 *************************************************************************/
 
-PREDICATES
-  error(STRINGLIST)
-  known_word(STRING)
-
-CLAUSES
   error(LIST):-	write(">> "),member(Y,LIST),not(known_word(Y)),!,
 		write("Unknown word: ",Y),nl.
 
@@ -182,14 +130,7 @@ CLAUSES
    New York).
 */
 
-PREDICATES		
-  check(STRINGLIST)                          /* Check that the list is empty */
-  get_ent(STRINGLIST,STRINGLIST,STRING)            /* Get the compound entity      */
-  get_cmpent(STRINGLIST,STRINGLIST,STRING,STRING)  /* Get the first component      */
-  ent_end(STRINGLIST)                        /* Get the rest of the entity   */
-
-CLAUSES
-  check([]).	
+  check([]).
 
   get_ent([E|S],S,E):-ent_end(S),!.
   get_ent(S1,S2,ENT):-get_cmpent(S1,S2," ",E1),frontchar(E1,_,E),ENT=E.
@@ -214,12 +155,7 @@ CLAUSES
   constructions to the language.
 */
 
-PREDICATES
-  s_rel(STRINGLIST,STRINGLIST,STRING)
-  s_unit(STRINGLIST,STRINGLIST,STRING)
-  s_val(STRINGLIST,STRINGLIST,REAL)
 
-CLAUSES
   s_rel(S1,S2,REL):-relop(RLIST,REL),append(RLIST,S2,S1).
 
   s_unit([UNIT|S],S,UNIT).
@@ -228,21 +164,6 @@ CLAUSES
   s_val([X|S],S,VAL):-		str_real(X,VAL).
 
 
-PREDICATES
-  s_attr(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_minmax(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_rest(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_or(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_or1(STRINGLIST,STRINGLIST,STRING,QUERY,QUERY)
-  s_and(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_and1(STRINGLIST,STRINGLIST,STRING,QUERY,QUERY)
-  s_elem(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_assoc(STRINGLIST,STRINGLIST,STRING,QUERY)
-  s_assoc1(STRINGLIST,STRINGLIST,STRING,STRING,QUERY)
-  s_nest(STRINGLIST,STRINGLIST,STRING,QUERY)
-  get_assoc(STRINGLIST,STRINGLIST,STRING)
-
-CLAUSES
   pars(LIST,E,Q):-s_attr(LIST,OL,E,Q),check(OL),!.
   pars(LIST,_,_):-error(LIST),fail.
 
@@ -380,11 +301,6 @@ CLAUSES
   EVALUATION OF QUESTIONS
 *************************************************************************/
 
-PREDICATES  /* Support predicates for the parser */
-  sel_min(STRING,STRING,REAL,STRING,STRING,STRINGLIST)
-  sel_max(STRING,STRING,REAL,STRING,STRING,STRINGLIST)
-
-CLAUSES
   eval(q_min(ENT,TREE),ANS):-
 		findall(X,eval(TREE,X),L),
 		entitysize(ENT,ATTR),
@@ -452,27 +368,20 @@ CLAUSES
   how to process an action from a list of choices.
 **************************************************************************/
 
-PREDICATES
-/* Main loop */
-  natlang
-  loaddba
-  savedba
-  mainmenu
-  proces(INTEGER)
 
-/* View and update the language */
-  viewlang viewlang1(INTEGER)
-  updatelang updatelang1(INTEGER)
+%%%%% GOAL loaddba, natlang.
 
-GOAL loaddba, natlang.
 
-CLAUSES
+
+geobase:-
+        loaddba, natlang.
+
   natlang:-
-	makewindow(21,112,0,"",24,0,1,80),
+	% makewindow(21,112,0,"",24,0,1,80),
 	write("ESC: Quit this menu -- Use arrow keys to select and hit RETURN to activate."),
-	makewindow(22,112,0,"",24,0,1,80),
+	% makewindow(22,112,0,"",24,0,1,80),
 	write("Esc: Quit     F8: Last line    Ctrl S: Stop output    End: End of line"),
-	makewindow(2,7,7,"GEOBASE: Natural language interface to U.S. geography",0,0,24,80),
+	% makewindow(2,7,7,"GEOBASE: Natural language interface to U.S. geography",0,0,24,80),
 	mainmenu.
 
   mainmenu:-	repeat,
@@ -504,10 +413,10 @@ CLAUSES
 
   loaddba:-schema(_,_,_),!.  /* Database already loaded */
   loaddba:-
-	existfile("geobase.lan"),existfile("geobase.dba"),
+	% existfile("geobase.lan"),existfile("geobase.dba"),
 	write("Loading database file - please wait\n"),
-	consult("geobase.lan",language),
-	consult("geobase.dba",data),!.
+	consult("geobase.lan"),
+	consult("geobase.dba"),!.
   loaddba:-
 	write(">> geobase.dba not in default directory\n").
 
@@ -542,95 +451,82 @@ CLAUSES
 	writef("%-12 %-8 %-12\n","Entity","Assoc","Entity"),
 	write("************ ******** ************\n"),
 	schema(E1,A,E2),writef("%-12 %-8 %-12\n",E1,A,E2),fail.
-	
+
   viewlang1(1):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(2):-
 	write("Entities\n********\n"),
 	findall(X,entity(X),L),unik(L,L1),write_list(0,L1),nl.
-	
+
   viewlang1(2):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(3):-
 	writef("%-15 %-15\n","Synonym","Entity"),
 	write("*************** ***************\n"),
 	synonym(E,S),writef("%-15 %-15\n",E,S),fail.
-	
+
   viewlang1(3):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(4):-
 	write("Associations\n************\n"),
 	assoc(X,L),
 	writef("%-8 ",X),write_list2(L),nl,fail.
-	
+
   viewlang1(4):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(5):-
 	write("Ignore\n******\n"),
 	findall(X,ignore(X),L),write_list(0,L),nl.
-	
+
   viewlang1(5):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(6):-
 	writef("%-15 %-15\n","entity","unit"),
 	write("*************** ***************\n"),
 	unit(E,U),writef("%-15 %-15\n",E,U),fail.
-	
+
   viewlang1(6):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(7):-
 	write("Names of relational operators\n*****************************\n"),
 	relop(LIST,REL),write(REL,": "),write_list2(LIST),nl,fail.
-	
+
   viewlang1(7):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
   viewlang1(8):-
 	write("Minimum\n*******\n"),
 	findall(X,minn(X),L),write_list(0,L),nl.
-	
+
   viewlang1(8):-
     write("\n\nPress any key to continue"),
     readchar(_).
-  	
+
   viewlang1(9):-
 	write("Maximum\n*******\n"),
 	findall(X,maxx(X),L),write_list(0,L),nl.
-	
+
   viewlang1(9):-
     write("\n\nPress any key to continue"),
-    readchar(_).	
+    readchar(_).
 
 /*************************************************************************
    Update the language
 *************************************************************************/
 
-DATABASE - updateflag
-  updated
-
-PREDICATES
-  newignore
-  newsynonym
-  newassoc
-  getent(ENT)
-  getassoc(ASSOC)
-  reg_updated
-  save_if_updated
-
-CLAUSES
   updatelang:-	retractall(updated),
   		repeat,
 		menu(5,40,3,9,
@@ -647,19 +543,19 @@ CLAUSES
   updatelang1(3):-newignore.
 
   newsynonym:-	getent(E),write("Synonym: "),
-		readln(SYNONYM),SYNONYM><"",
+		readln(SYNONYM),SYNONYM\='',
 		assert(synonym(SYNONYM,E)),
 		reg_updated,
 		newsynonym.
 
-  newignore:-	write("Ignore:"),readln(IGNORE),IGNORE><"",
+  newignore:-	write("Ignore:"),readln(IGNORE),IGNORE\='',
 		reg_updated,
 		assert(ignore(IGNORE)),newignore.
 
   newassoc:-
 		getassoc(ASSOC),
 		write("New form: "),
-		readln(FORM),FORM >< "",
+		readln(FORM),FORM \= '',
 		scan(FORM,LIST),
 		reg_updated,
 		assert(assoc(ASSOC,LIST)),

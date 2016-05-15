@@ -8,27 +8,15 @@
 /*		repeat						*/
 /****************************************************************/
 
-PREDICATES
-  nondeterm repeat
 
-CLAUSES
-  repeat.
-  repeat:-repeat.
+  % repeat.
+  % repeat:-repeat.
 
 
 /****************************************************************/
 /*		miscellaneous					*/
 /****************************************************************/
 
-PREDICATES
-  maxlen(STRINGLIST,COL,COL)		/* The length of the longest string */
-  listlen(STRINGLIST,ROW)		/* The length of a list		    */
-  writelist(ROW,COL,STRINGLIST)		/* used in the menu predicates	    */
-  reverseattr(ATTR,ATTR)		/* Returns the reversed attribute   */
-  min(ROW,ROW,ROW) min(COL,COL,COL) min(LEN,LEN,LEN) min(INTEGER,INTEGER,INTEGER)
-  max(ROW,ROW,ROW) max(COL,COL,COL) max(LEN,LEN,LEN) max(INTEGER,INTEGER,INTEGER)
-
-CLAUSES
   maxlen([H|T],MAX,MAX1) :-
 	str_len(H,LENGTH),
 	LENGTH>MAX,!,
@@ -47,7 +35,7 @@ CLAUSES
 	LI1=LI+1,
 	writelist(LI1,ANTKOL,T).
 
-  min(X,Y,X):-X<=Y,!.
+  min(X,Y,X):-X=<Y,!.
   min(_,X,X).
 
   max(X,Y,X):-X>=Y,!.
@@ -68,27 +56,19 @@ CLAUSES
 /*      Then try with first letter of each string.		*/
 /****************************************************************/
 
-PREDICATES
-  upc(CHAR,CHAR)  lowc(CHAR,CHAR)
-  try_upper(CHAR,STRING)
-  tryfirstupper(CHAR,STRINGLIST,ROW,ROW)
-  tryfirstletter(CHAR,STRINGLIST,ROW,ROW)
-  tryletter(CHAR,STRINGLIST,ROW)
-
-CLAUSES
   upc(CHAR,CH):-
-	CHAR>='a',CHAR<='z',!,
+	CHAR>='a',CHAR=<'z',!,
 	char_int(CHAR,CI), CI1=CI-32, char_int(CH,CI1).
   upc(CH,CH).
 
   lowc(CHAR,CH):-
-	CHAR>='A',CHAR<='Z',!,
+	CHAR>='A',CHAR=<'Z',!,
 	char_int(CHAR,CI), CI1=CI+32, char_int(CH,CI1).
   lowc(CH,CH).
 
   try_upper(CHAR,STRING):-
 	frontchar(STRING,CH,_),
-	CH>='A',CH<='Z',!,
+	CH>='A',CH=<'Z',!,
 	CH=CHAR.
   try_upper(CHAR,STRING):-
 	frontchar(STRING,_,REST),
@@ -120,11 +100,6 @@ CLAUSES
 /* zero, two is added to the size of the window			 */
 /****************************************************************/
 
-PREDICATES
-  adjustwindow(ROW,COL,ROW,COL,ROW,COL)
-  adjframe(ATTR,ROW,COL,ROW,COL)
-
-CLAUSES
   adjustwindow(LI,KOL,DLI,DKOL,ALI,AKOL):-
 		LI<25-DLI,KOL<80-DKOL,!,ALI=LI,AKOL=KOL.
   adjustwindow(LI,_,DLI,DKOL,ALI,AKOL):-
@@ -143,12 +118,6 @@ CLAUSES
 /* Returns a symbolic key from the KEY domain		        */
 /****************************************************************/
 
-PREDICATES
-  readkey(KEY)
-  readkey1(KEY,CHAR,INTEGER)
-  readkey2(KEY,INTEGER)
-
-CLAUSES
   readkey(KEY):-readchar(T),char_int(T,VAL),readkey1(KEY,T,VAL).
 
   readkey1(KEY,_,0):-!,readchar(T),char_int(T,VAL),readkey2(KEY,VAL).
@@ -159,7 +128,7 @@ CLAUSES
   readkey1(bdel,_,8):-!.
   readkey1(ctrlbdel,_,127):-!.
   readkey1(char(T),T,_) .
-  
+
   readkey2(btab,15):-!.
   readkey2(del,83):-!.
   readkey2(ins,82):-!.
