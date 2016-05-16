@@ -27,12 +27,12 @@
   listlen([],0).
   listlen([_|T],N):-
 	listlen(T,X),
-	N=X+1.
+	N is X+1.
 
   writelist(_,_,[]).
   writelist(LI,ANTKOL,[H|T]):-
 	field_str(LI,0,ANTKOL,H),
-	LI1=LI+1,
+	LI1 is LI+1,
 	writelist(LI1,ANTKOL,T).
 
   min(X,Y,X):-X=<Y,!.
@@ -47,7 +47,7 @@
 	bitand(A1,$70,H21),
 	bitright(H21,4,H22),
 	bitand(A1,$08,H31),
-	A2=H12+H22+H31.
+	A2 is H12+H22+H31.
 
 
 /****************************************************************/
@@ -58,12 +58,12 @@
 
   upc(CHAR,CH):-
 	CHAR>='a',CHAR=<'z',!,
-	char_int(CHAR,CI), CI1=CI-32, char_int(CH,CI1).
+	char_int(CHAR,CI), CI1 is CI-32, char_int(CH,CI1).
   upc(CH,CH).
 
   lowc(CHAR,CH):-
 	CHAR>='A',CHAR=<'Z',!,
-	char_int(CHAR,CI), CI1=CI+32, char_int(CH,CI1).
+	char_int(CHAR,CI), CI1 is CI+32, char_int(CH,CI1).
   lowc(CH,CH).
 
   try_upper(CHAR,STRING):-
@@ -77,13 +77,13 @@
   tryfirstupper(CHAR,[W|_],N,N) :-
 	try_upper(CHAR,W),!.
   tryfirstupper(CHAR,[_|T],N1,N2) :-
-	N3 = N1+1,
+	N3 is N1+1,
 	tryfirstupper(CHAR,T,N3,N2).
 
   tryfirstletter(CHAR,[W|_],N,N) :-
 	frontchar(W,CHAR,_),!.
   tryfirstletter(CHAR,[_|T],N1,N2) :-
-	N3 = N1+1,
+	N3 is N1+1,
 	tryfirstletter(CHAR,T,N3,N2).
 
   tryletter(CHAR,LIST,SELECTION):-
@@ -103,14 +103,14 @@
   adjustwindow(LI,KOL,DLI,DKOL,ALI,AKOL):-
 		LI<25-DLI,KOL<80-DKOL,!,ALI=LI,AKOL=KOL.
   adjustwindow(LI,_,DLI,DKOL,ALI,AKOL):-
-		LI<25-DLI,!,ALI=LI,AKOL=80-DKOL.
+		LI<25-DLI,!,ALI=LI,AKOL is 80-DKOL.
   adjustwindow(_,KOL,DLI,DKOL,ALI,AKOL):-
-		KOL<80-DKOL,!,ALI=25-DLI, AKOL=KOL.
+		KOL<80-DKOL,!,ALI is 25-DLI, AKOL=KOL.
   adjustwindow(_,_,DLI,DKOL,ALI,AKOL):-
-		ALI=25-DLI, AKOL=80-DKOL.
+		ALI is 25-DLI, AKOL is 80-DKOL.
 
   adjframe(0,R,C,R,C):-!.
-  adjframe(_,R1,C1,R2,C2):-R2=R1+2, C2=C1+2.
+  adjframe(_,R1,C1,R2,C2):-R2 is R1+2, C2 is C1+2.
 
 
 /****************************************************************/
@@ -146,5 +146,5 @@
   readkey2(ctrlpgdn,118):-!.
   readkey2(ctrlhome,119):-!.
   readkey2(ctrlpgup,132):-!.
-  readkey2(fkey(N),VAL):- VAL>58, VAL<70, N=VAL-58, !.
+  readkey2(fkey(N),VAL):- VAL>58, VAL<70, N is VAL-58, !.
   readkey2(otherspec,_).

@@ -7,7 +7,7 @@
 *************************************************************************/
 
   index([X|_],1,X):- !.
-  index([_|L],N,X):- N>1,N1=N-1,index(L,N1,X).
+  index([_|L],N,X):- N>1,N1 is N-1,index(L,N1,X).
 
   unik([],[]).
   unik([H|T],L):-member(H,T),!,unik(T,L).
@@ -22,11 +22,11 @@
   write_list(_,[X]):-!,write(X).
   write_list(4,[H|T]):-!,write(H),nl,write_list(0,T).
   write_list(3,[H|T]):-str_len(H,LEN),LEN>13,!,write(H),nl,write_list(0,T).
-  write_list(N,[H|T]):-str_len(H,LEN),LEN>13,!,N1=N+2,writef("%-27 ",H),write_list(N1,T).
-  write_list(N,[H|T]):-N1=N+1,writef("%-13 ",H),write_list(N1,T).
+  write_list(N,[H|T]):-str_len(H,LEN),LEN>13,!,N1 is N+2,writef("%-27 ",H),write_list(N1,T).
+  write_list(N,[H|T]):-N1 is N+1,writef("%-13 ",H),write_list(N1,T).
 
   write_list2([]).
-  write_list2([H|T]):-write(H,' '),write_list2(T).
+  write_list2([H|T]):-format('~w ',H),write_list2(T).
 
 
 /*************************************************************************
@@ -34,6 +34,20 @@
   the string and removes punctuation, parses the query and evaluates
   it.  The number of solutions are also reported here.
 *************************************************************************/
+
+geobase(STR):-  STR \= "",
+                atom_string(ATOM,STR),
+  		tokenize_atom(ATOM,LIST),               /* Returns a list of words(symbols)           */
+		filter(LIST,LIST1),           /* Removes punctuation and words to be ignored*/
+		pars(LIST1,E,Q),              /* Parses queries                            */
+		findall(A,eval(Q,A),L),
+		unik(L,L1),
+		write_list(0,L1),
+		write_unit(E),
+		listlen(L1,N),
+		write_solutions(N),
+		fail.
+geobase(_).
 
 loop(STR):-	STR \= "",
                 writeq(STR),nl,
@@ -101,7 +115,7 @@ loop(STR):-	STR \= "",
 *************************************************************************/
 
   error(LIST):-	write(">> "),member(Y,LIST),not(known_word(Y)),!,
-		write(["Unknown word: ",Y]),nl.
+		format('Unknown word: ~w',[Y]),nl.
 
   error(_):-	write("Sorry, the sentence can't be recognized").
 
@@ -162,8 +176,8 @@ loop(STR):-	STR \= "",
   s_rel(S1,S2,REL):-relop(RLIST,REL),append(RLIST,S2,S1).
 
   s_unit([UNIT|S],S,UNIT).
-  s_val([X,thousand|S],S,VAL):-	!,str_real(X,XX),VAL=1000*XX.
-  s_val([X,million|S],S,VAL):-	!,str_real(X,XX),VAL=1000000*XX.
+  s_val([X,thousand|S],S,VAL):-	!,str_real(X,XX),VAL is 1000*XX.
+  s_val([X,million|S],S,VAL):-	!,str_real(X,XX),VAL is 1000000*XX.
   s_val([X|S],S,VAL):-		str_real(X,VAL).
 
 
