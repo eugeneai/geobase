@@ -135,4 +135,9 @@
   db(state,with,road,STATE,ROAD):-	road(ROAD,LIST),member(STATE,LIST).
 
   db(E,in,continent,VAL,usa):-		ent(E,VAL).
-  db(name,of,_,X,X):-			bound(X).
+  db(name,of,_,X,X):-			nonvar(X).
+
+
+/* ------------------------ tests --------------------------------- */
+
+test(X):-X='state', loaddba, geobase(X).

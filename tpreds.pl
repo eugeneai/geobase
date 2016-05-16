@@ -56,6 +56,7 @@
 /*      Then try with first letter of each string.		*/
 /****************************************************************/
 
+/*
   upc(CHAR,CH):-
 	CHAR>='a',CHAR=<'z',!,
 	char_int(CHAR,CI), CI1 is CI-32, char_int(CH,CI1).
@@ -90,7 +91,7 @@
 	upc(CHAR,CH),tryfirstupper(CH,LIST,0,SELECTION),!.
   tryletter(CHAR,LIST,SELECTION):-
 	lowc(CHAR,CH),tryfirstletter(CH,LIST,0,SELECTION).
-
+*/
 
 
 /*****************************************************************/

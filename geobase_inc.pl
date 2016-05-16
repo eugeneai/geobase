@@ -21,9 +21,11 @@
   write_list(_,[]).
   write_list(_,[X]):-!,write(X).
   write_list(4,[H|T]):-!,write(H),nl,write_list(0,T).
-  write_list(3,[H|T]):-str_len(H,LEN),LEN>13,!,write(H),nl,write_list(0,T).
-  write_list(N,[H|T]):-str_len(H,LEN),LEN>13,!,N1 is N+2,writef("%-27 ",H),write_list(N1,T).
-  write_list(N,[H|T]):-N1 is N+1,writef("%-13 ",H),write_list(N1,T).
+  write_list(3,[H|T]):-string_length(H,LEN),LEN>13,!,write(H),nl,write_list(0,T).
+  % write_list(N,[H|T]):-string_length(H,LEN),LEN>13,!,N1 is N+2,writef("%-27 ",H),write_list(N1,T).
+  write_list(N,[H|T]):-string_length(H,LEN),LEN>13,!,N1 is N+2,format("~w ",[H]),write_list(N1,T).
+  % write_list(N,[H|T]):-N1 is N+1,writef("%-13 ",H),write_list(N1,T).
+  write_list(N,[H|T]):-N1 is N+1,format("~w ",[H]),write_list(N1,T).
 
   write_list2([]).
   write_list2([H|T]):-format('~w ',H),write_list2(T).
@@ -49,34 +51,21 @@ geobase(STR):-  STR \= "",
 		fail.
 geobase(_).
 
-loop(STR):-	STR \= "",
-                writeq(STR),nl,
-                atom_string(ATOM,STR),
-  		tokenize_atom(ATOM,LIST),               /* Returns a list of words(symbols)           */
-		filter(LIST,LIST1),           /* Removes punctuation and words to be ignored*/
-                write([LIST1,E,Q]),nl,
-		pars(LIST1,E,Q),              /* Parses queries                            */
-		findall(A,eval(Q,A),L),
-		unik(L,L1),
-		write_list(0,L1),
-		write_unit(E),
-		listlen(L1,N),
-		write_solutions(N),
-		fail.
+loop(STR):-	geobase(STR).
 
-  loop(STR):-	STR \= '',readquery(L),loop(L).
+loop(STR):-	STR \= '',readquery(L),loop(L).
 
-  readquery(QUERY):-nl,nl,write("Query: "),readln(QUERY).
+  readquery(QUERY):-nl,nl,write("Query: "),readln([QUERY]).
 
   scan(STR,[TOK|LIST]):-
 		fronttoken(STR,SYMB,STR1),!,
-		upper_lower(SYMB,TOK),
+		upper_lower(SYMB,TOK), %FIXME reimlement lowering
 		scan(STR1,LIST).
   scan(_,[]).
 
-  filter(["."|T],L):-	!,filter(T,L).
-  filter([","|T],L):-	!,filter(T,L).
-  filter(["?"|T],L):-	!,filter(T,L).
+  filter(['.'|T],L):-	!,filter(T,L).
+  filter([','|T],L):-	!,filter(T,L).
+  filter(['?'|T],L):-	!,filter(T,L).
   filter([H|T],L):-	ignore(H),!,filter(T,L).
   filter([H|T],[H|L]):-	filter(T,L).
   filter([],[]).
@@ -97,8 +86,8 @@ loop(STR):-	STR \= "",
 
   ent_name(ENT,NAVN):-entn(E,NAVN),ent_synonym(E,ENT),entity(ENT).
 
-  entn(E,N):-concat(E,"s",N).
-  entn(E,N):-free(E),bound(N),concat(X,"ies",N),concat(X,"y",E).
+  entn(E,N):-atom_concat(E,'s',N).
+  entn(E,N):-var(E),nonvar(N),atom_concat(X,'ies',N),atom_concat(X,'y',E).
   entn(E,E).
 
   entity(name):-!.
@@ -120,12 +109,12 @@ loop(STR):-	STR \= "",
   error(_):-	write("Sorry, the sentence can't be recognized").
 
   known_word(X):-str_real(X,_),!.  /*   Check for special case words    */
-  known_word("and"):-!.
-  known_word("or"):-!.
-  known_word("not"):-!.
-  known_word("all"):-!.
-  known_word("thousand"):-!.
-  known_word("million"):-!.
+  known_word('and'):-!.
+  known_word('or'):-!.
+  known_word('not'):-!.
+  known_word('all'):-!.
+  known_word('thousand'):-!.
+  known_word('million'):-!.
   known_word(X):-minn(X),!.     /*  If not a special case word, check the */
   known_word(X):-maxx(X),!.     /*  dynamic database for known words      */
   known_word(X):-size(_,X),!.   /*  additional words.                     */
@@ -150,16 +139,16 @@ loop(STR):-	STR \= "",
   check([]).
 
   get_ent([E|S],S,E):-ent_end(S),!.
-  get_ent(S1,S2,ENT):-get_cmpent(S1,S2," ",E1),frontchar(E1,_,E),ENT=E.
+  get_ent(S1,S2,ENT):-get_cmpent(S1,S2,' ',E1),frontchar(E1,_,E),ENT=E.
 
-  get_cmpent([E|S],S,IND,ENT):-ent_end(S),concat(IND,E,ENT).
+  get_cmpent([E|S],S,IND,ENT):-ent_end(S),atom_concat(IND,E,ENT).
   get_cmpent([E|S1],S2,IND,ENT):-
-		concat(IND,E,II),concat(II," ",III),
+		atom_concat(IND,E,II),atom_concat(II,' ',III),
 		get_cmpent(S1,S2,III,ENT).
 
   ent_end([]).
-  ent_end(["and"|_]).
-  ent_end(["or"|_]).
+  ent_end(['and'|_]).
+  ent_end(['or'|_]).
 
 /*
   Here begins the parser. The first two parameters for the parsing
@@ -221,18 +210,18 @@ loop(STR):-	STR \= "",
 
 /* And has a higher priority than or */
   s_or(S1,S2,E,Q):-s_and(S1,S3,E,Q1),s_or1(S3,S2,E,Q1,Q).
-  s_or1(["or",ENT|S1],S2,E,Q1,q_or(Q1,Q2)):-ent_name(E,ENT),!,s_or(S1,S2,E,Q2).
-  s_or1(["or"|S1],S2,E,Q1,q_or(Q1,Q2)):-!,s_or(S1,S2,E,Q2).
+  s_or1(['or',ENT|S1],S2,E,Q1,q_or(Q1,Q2)):-ent_name(E,ENT),!,s_or(S1,S2,E,Q2).
+  s_or1(['or'|S1],S2,E,Q1,q_or(Q1,Q2)):-!,s_or(S1,S2,E,Q2).
   s_or1(S,S,_,Q,Q).
 
   s_and(S1,S2,E,Q):-s_elem(S1,S3,E,Q1),s_and1(S3,S2,E,Q1,Q).
-  s_and1(["and",ENT|S1],S2,E,Q1,q_and(Q1,Q2)):-ent_name(E,ENT),!,s_elem(S1,S2,E,Q2).
-  s_and1(["and"|S1],S2,E,Q1,q_and(Q1,Q2)):-!,s_elem(S1,S2,E,Q2).
+  s_and1(['and',ENT|S1],S2,E,Q1,q_and(Q1,Q2)):-ent_name(E,ENT),!,s_elem(S1,S2,E,Q2).
+  s_and1(['and'|S1],S2,E,Q1,q_and(Q1,Q2)):-!,s_elem(S1,S2,E,Q2).
   s_and1(S,S,_,Q,Q).
 
 
 /* not QUERY */
-  s_elem(["not"|S1],S2,E,q_not(E,Q)):-!,s_assoc(S1,S2,E,Q).
+  s_elem(['not'|S1],S2,E,q_not(E,Q)):-!,s_assoc(S1,S2,E,Q).
   s_elem(S1,S2,E,Q):-s_assoc(S1,S2,E,Q).
 
 
@@ -321,12 +310,12 @@ loop(STR):-	STR \= "",
   eval(q_min(ENT,TREE),ANS):-
 		findall(X,eval(TREE,X),L),
 		entitysize(ENT,ATTR),
-		sel_min(ENT,ATTR,99e99,"",ANS,L).
+		sel_min(ENT,ATTR,99e99,'',ANS,L).
 
   eval(q_max(ENT,TREE),ANS):-
 		findall(X,eval(TREE,X),L),
 		entitysize(ENT,ATTR),
-		sel_max(ENT,ATTR,-1,"",ANS,L).
+		sel_max(ENT,ATTR,-1,'',ANS,L).
 
   eval(q_sel(E,gt,ATTR,VAL),ANS):-
 		schema(ATTR,ASSOC,E),
@@ -394,9 +383,9 @@ geobase:-
         loaddba, natlang.
 
   natlang:-
-	% makewindow(21,112,0,"",24,0,1,80),
+	% makewindow(21,112,0,'',24,0,1,80),
 	%write("ESC: Quit this menu -- Use arrow keys to select and hit RETURN to activate."),
-	% makewindow(22,112,0,"",24,0,1,80),
+	% makewindow(22,112,0,'',24,0,1,80),
 	%write("Esc: Quit     F8: Last line    Ctrl S: Stop output    End: End of line"),
 	% makewindow(2,7,7,"GEOBASE: Natural language interface to U.S. geography",0,0,24,80),
 	mainmenu.
@@ -420,12 +409,12 @@ geobase:-
                 .
 
   proces(0):-write("\nAre you sure you want to quit? (y/n): "),readchar(T),T='y'.
-  proces(1):-file_str("geobase.hlp",TXT),display(TXT),clearwindow,!.
+  proces(1):-file_str('geobase.hlp',TXT),display(TXT),clearwindow,!.
   proces(1):-write(">> geobase.hlp not in default directory\n").
-  proces(2):-makewindow(3,7,0,"",0,0,25,80),write("Type EXIT to return\n\n"),
+  proces(2):-makewindow(3,7,0,'',0,0,25,80),write("Type EXIT to return\n\n"),
              system(""),!,removewindow.
   proces(2):-write(">> command.com not accessible. press any key"),readchar(_),removewindow.
-  proces(3):-makewindow(3,7,112,"",9,5,15,75),edit("",_),removewindow.
+  proces(3):-makewindow(3,7,112,'',9,5,15,75),edit('',_),removewindow.
   proces(4).
   proces(5):-readquery(L),loop(L).
   proces(6).
@@ -434,18 +423,18 @@ geobase:-
 
   loaddba:-schema(_,_,_),!.  /* Database already loaded */
   loaddba:-
-	% existfile("geobase.lan"),existfile("geobase.dba"),
+	% existfile('geobase.lan'),existfile('geobase.dba'),
 	write("Loading database file - please wait\n"),
-	consult("geobase.lan"),
-	consult("geobase.dba"),!.
+	consult('geobase.lan'),
+	consult('geobase.dba'),!.
   loaddba:-
 	write(">> geobase.dba not in default directory\n").
 
   savedba:-
 	write("Saving language definition - please wait\n"),
-	deletefile("geobase.bak"),
-	renamefile("geobase.lan","geobase.bak"),
-	save("geobase.lan",language).
+	deletefile('geobase.bak'),
+	renamefile('geobase.lan','geobase.bak'),
+	save('geobase.lan',language).
 
 /**************************************************************************
    View and the language
@@ -585,13 +574,13 @@ geobase:-
   getassoc(A):-
 		findall(X,assoc(X,_),L),
 		unik(L,L1),
-		menu(11,30,7,7,L1,"Assoc",1,C),
+		menu(11,30,7,7,L1,'Assoc',1,C),
 		index(L1,C,A).
 
   getent(E):-
 		findall(X,entity(X),L),
 		unik(L,L1),
-		menu(2,49,7,7,L1,"Entity",1,C),
+		menu(2,49,7,7,L1,'Entity',1,C),
 		index(L1,C,E).
 
   reg_updated:-updated,!.
