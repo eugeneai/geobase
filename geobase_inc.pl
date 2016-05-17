@@ -75,7 +75,7 @@ loop(STR):-	STR \= '',readquery(L),loop(L).
 
   write_solutions(0):-!,write("\nNo solutions").
   write_solutions(1):-!.
-  write_solutions(N):-!,writef("\n% Solutions",N).
+  write_solutions(N):-!,format("\n\n~w Solutions\n",[N]).
 
 /*************************************************************************
   ENTITY NAMES

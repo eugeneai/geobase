@@ -117,13 +117,13 @@
   db(point,in,state,POINT,STATE):-	highlow(STATE,_,_,_,POINT,_).
   db(state,with,point,STATE,POINT):-	highlow(STATE,_,POINT,_,_,_).
   db(state,with,point,STATE,POINT):-	highlow(STATE,_,_,_,POINT,_).
-  db(height,of,point,HEIGHT,POINT):-	highlow(_,_,_,_,POINT,H),str_int(HEIGHT,H),!.
-  db(height,of,point,HEIGHT,POINT):-	highlow(_,_,POINT,H,_,_),str_int(HEIGHT,H),!.
+  db(height,of,point,HEIGHT,POINT):-	highlow(_,_,_,_,POINT,H),str_real(HEIGHT,H),!.
+  db(height,of,point,HEIGHT,POINT):-	highlow(_,_,POINT,H,_,_),str_real(HEIGHT,H),!.
 
   /* Relationships about mountains */
   db(mountain,in,state,MOUNT,STATE):-	mountain(STATE,_,MOUNT,_).
   db(state,with,mountain,STATE,MOUNT):-	mountain(STATE,_,MOUNT,_).
-  db(height,of,mountain,HEIGHT,MOUNT):-	mountain(_,_,MOUNT,H1),str_int(HEIGHT,H1).
+  db(height,of,mountain,HEIGHT,MOUNT):-	mountain(_,_,MOUNT,H1),str_real(HEIGHT,H1).
 
   /* Relationships about lakes */
   db(lake,in,state,LAKE,STATE):-	lake(LAKE,_,LIST),member(STATE,LIST).
