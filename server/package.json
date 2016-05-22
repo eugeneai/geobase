@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.4"
+    "express": "*",
+    "express-generator": "*",
+    "pengines": "^1.0.2"
   }
 }
