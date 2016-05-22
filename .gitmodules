@@ -1,0 +1,9 @@
+[submodule "ClioPatria"]
+	path = ClioPatria
+	url = https://github.com/ClioPatria/ClioPatria.git
+[submodule "pengines"]
+	path = pengines
+	url = https://github.com/SWI-Prolog/pengines.git
+[submodule "geobase-server"]
+	path = geobase-server
+	url = https://github.com/eugeneai/geobase-server.git
