@@ -10,18 +10,60 @@
 
 
 <Ontology xmlns="http://www.w3.org/2002/07/owl#"
-     xml:base="http://www.semanticweb.org/bernard_black/ontologies/2016/3/untitled-ontology-9"
+     xml:base="http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
-     ontologyIRI="http://www.semanticweb.org/bernard_black/ontologies/2016/3/untitled-ontology-9">
+     ontologyIRI="http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#">
     <Prefix name="" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
     <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
     <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
     <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
     <Declaration>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Strike"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Angle"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Angular"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Azimuth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Cenosoic_Slip"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Depth"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="FeatureQuality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Length"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Linear"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Notional"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Slip"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Width"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Associated_CSS"/>
     </Declaration>
     <Declaration>
@@ -34,25 +76,10 @@
         <Class IRI="#Date"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Engineering_geological"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Fault"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Feature"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Geomorphological"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Geophysical"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Gydrogeological"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#ID"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Info"/>
@@ -64,13 +91,7 @@
         <Class IRI="#Location"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Meteorological"/>
-    </Declaration>
-    <Declaration>
         <Class IRI="#Name"/>
-    </Declaration>
-    <Declaration>
-        <Class IRI="#Paleoseismological"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Reliability_class"/>
@@ -79,79 +100,25 @@
         <Class IRI="#Seismic_activity_of_fault"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Seismological"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qprop"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Slip_rate"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Slip_sense"/>
+        <ObjectProperty IRI="cenosoic"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Structural_geological"/>
+        <ObjectProperty IRI="feature"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#Averaged_slip_rate_mm_year"/>
+        <ObjectProperty IRI="gradeOLD"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#Elapsed_time_years"/>
+        <ObjectProperty IRI="type"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#Engineering_geological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Geomorphological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Geophysical"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Gydrogeological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Lateral_max_slip_per_event_m"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Meteorological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Paleoseismological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Potential_Ms_max"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Potential_Mw_max"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Recurrence_interval"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Seismological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Slip_rate"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Slip_rate_mm_year"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Slip_sense_Index"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Structural_geological"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Total_Cenozoic_vertical_slip"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Total_activity"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Total_max_slip_per_event_m"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#Vertical_max_slip_per_event_m"/>
+        <ObjectProperty IRI="value"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#absolute_deformation_age"/>
@@ -172,6 +139,9 @@
         <ObjectProperty IRI="#angular"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#averaged_slip_rate_mm_year"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#azimuth"/>
     </Declaration>
     <Declaration>
@@ -184,16 +154,31 @@
         <ObjectProperty IRI="#displace"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#grade"/>
+        <ObjectProperty IRI="#elapsed_time_years"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#height"/>
+        <ObjectProperty IRI="#engineering_geological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#geological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#geomorphological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#geophysical"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#gydrogeological"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#last_activation_age"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#last_activation_age_index"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#length"/>
@@ -205,7 +190,34 @@
         <ObjectProperty IRI="#max"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="#meteorological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#paleoseismological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#potential_ms_max"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#potential_mw_max"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="#property"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#recurrence_interval"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#seismological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#slip_rate"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#slip_rate_mm_year"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#slip_sense_index"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#speed"/>
@@ -214,11 +226,122 @@
         <ObjectProperty IRI="#strike"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#total_Cenozoic_lateral_slip"/>
+        <ObjectProperty IRI="#structural_geological"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#total_activity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#width"/>
     </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="grade"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="index"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AC"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LS"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="EngineeringGeological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Geological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Geomorphological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Geophysical"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Meteorological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Paleoseismological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Seismological"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="StructuralGeological"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Strike"/>
+        <Class IRI="Angular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Angle"/>
+        <Class IRI="Angular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Angular"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Azimuth"/>
+        <Class IRI="Angular"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Cenosoic_Slip"/>
+        <Class IRI="Slip"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Depth"/>
+        <Class IRI="Linear"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="FeatureQuality"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Length"/>
+        <Class IRI="Linear"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Linear"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Notional"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Slip"/>
+        <Class IRI="Notional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Width"/>
+        <Class IRI="Linear"/>
+    </SubClassOf>
     <SubClassOf>
         <Class IRI="#Associated_CSS"/>
         <Class IRI="#Fault"/>
@@ -236,24 +359,8 @@
         <Class IRI="#Info"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Engineering_geological"/>
         <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Geomorphological"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Geophysical"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Gydrogeological"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#ID"/>
-        <Class IRI="#Fault"/>
+        <Class IRI="Notional"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Info"/>
@@ -268,16 +375,8 @@
         <Class IRI="#Info"/>
     </SubClassOf>
     <SubClassOf>
-        <Class IRI="#Meteorological"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
         <Class IRI="#Name"/>
         <Class IRI="#Info"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Paleoseismological"/>
-        <Class IRI="#Feature"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="#Reliability_class"/>
@@ -287,105 +386,79 @@
         <Class IRI="#Seismic_activity_of_fault"/>
         <Class IRI="#Fault"/>
     </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Seismological"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Slip_rate"/>
-        <Class IRI="#Feature"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Slip_sense"/>
+    <DisjointClasses>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
         <Class IRI="#Fault"/>
-    </SubClassOf>
-    <SubClassOf>
-        <Class IRI="#Structural_geological"/>
         <Class IRI="#Feature"/>
-    </SubClassOf>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+        <NamedIndividual IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AC"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+        <NamedIndividual IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LS"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="EngineeringGeological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Geological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Geomorphological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Geophysical"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Meteorological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Paleoseismological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="Seismological"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="FeatureQuality"/>
+        <NamedIndividual IRI="StructuralGeological"/>
+    </ClassAssertion>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Averaged_slip_rate_mm_year"/>
-        <ObjectProperty IRI="#speed"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Elapsed_time_years"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qprop"/>
         <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Engineering_geological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Geomorphological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Geophysical"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Gydrogeological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Lateral_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Meteorological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Paleoseismological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Potential_Ms_max"/>
-        <ObjectProperty IRI="#magnitude"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Potential_Mw_max"/>
-        <ObjectProperty IRI="#magnitude"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Recurrence_interval"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
         <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Seismological"/>
-        <ObjectProperty IRI="#grade"/>
+        <ObjectProperty IRI="cenosoic"/>
+        <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Slip_rate"/>
-        <ObjectProperty IRI="#grade"/>
+        <ObjectProperty IRI="feature"/>
+        <ObjectProperty IRI="value"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Slip_rate_mm_year"/>
-        <ObjectProperty IRI="#speed"/>
+        <ObjectProperty IRI="gradeOLD"/>
+        <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Slip_sense_Index"/>
-        <ObjectProperty IRI="#displace"/>
+        <ObjectProperty IRI="type"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Structural_geological"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Total_Cenozoic_vertical_slip"/>
-        <ObjectProperty IRI="#amplitude_slip"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Total_activity"/>
-        <ObjectProperty IRI="#grade"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Total_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#Vertical_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
+        <ObjectProperty IRI="value"/>
+        <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#absolute_deformation_age"/>
@@ -412,6 +485,10 @@
         <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#averaged_slip_rate_mm_year"/>
+        <ObjectProperty IRI="#speed"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#azimuth"/>
         <ObjectProperty IRI="#dip"/>
     </SubObjectPropertyOf>
@@ -428,12 +505,28 @@
         <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#grade"/>
+        <ObjectProperty IRI="#elapsed_time_years"/>
         <ObjectProperty IRI="#property"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#height"/>
-        <ObjectProperty IRI="#length"/>
+        <ObjectProperty IRI="#engineering_geological"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#geological"/>
+        <ObjectProperty IRI="gradeOLD"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#geomorphological"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#geophysical"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#gydrogeological"/>
+        <ObjectProperty IRI="#geological"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#last_activation_age"/>
@@ -444,8 +537,12 @@
         <ObjectProperty IRI="#age"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
+        <ObjectProperty IRI="#max"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="#length"/>
-        <ObjectProperty IRI="#property"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qprop"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#magnitude"/>
@@ -453,6 +550,42 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#max"/>
+        <ObjectProperty IRI="#displace"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#meteorological"/>
+        <ObjectProperty IRI="gradeOLD"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#paleoseismological"/>
+        <ObjectProperty IRI="#seismological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#potential_ms_max"/>
+        <ObjectProperty IRI="#magnitude"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#potential_mw_max"/>
+        <ObjectProperty IRI="#magnitude"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#recurrence_interval"/>
+        <ObjectProperty IRI="#property"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#seismological"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#slip_rate"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#slip_rate_mm_year"/>
+        <ObjectProperty IRI="#speed"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#slip_sense_index"/>
         <ObjectProperty IRI="#displace"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -464,13 +597,304 @@
         <ObjectProperty IRI="#length"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#total_Cenozoic_lateral_slip"/>
+        <ObjectProperty IRI="#structural_geological"/>
+        <ObjectProperty IRI="#geological"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#total_activity"/>
+        <ObjectProperty IRI="gradeOLD"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
         <ObjectProperty IRI="#amplitude_slip"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
+        <ObjectProperty IRI="#amplitude_slip"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
+        <ObjectProperty IRI="#max"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
+        <ObjectProperty IRI="#max"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#width"/>
         <ObjectProperty IRI="#length"/>
     </SubObjectPropertyOf>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="cenosoic"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="feature"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="gradeOLD"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="type"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#absolute_deformation_age"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#activity_degree"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#age"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#amplitude_slip"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#angle"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#angular"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#averaged_slip_rate_mm_year"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#azimuth"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#depth"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#dip"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#displace"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#engineering_geological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#geomorphological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#geophysical"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#gydrogeological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#last_activation_age"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#last_activation_age_index"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#length"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#magnitude"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#max"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#meteorological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#paleoseismological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#potential_ms_max"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#potential_mw_max"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#seismological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#slip_rate"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#slip_rate_mm_year"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#slip_sense_index"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#speed"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#strike"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#structural_geological"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#total_activity"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
+    </FunctionalObjectProperty>
+    <FunctionalObjectProperty>
+        <ObjectProperty IRI="#width"/>
+    </FunctionalObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qprop"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="cenosoic"/>
+        <Class IRI="Slip"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="feature"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="type"/>
+        <Class IRI="#Feature"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="value"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#engineering_geological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#geomorphological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#geophysical"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#gydrogeological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#meteorological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#paleoseismological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#seismological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#slip_rate"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#structural_geological"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qprop"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="cenosoic"/>
+        <Class IRI="Cenosoic_Slip"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="feature"/>
+        <Class IRI="#Feature"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="type"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+    </ObjectPropertyRange>
+    <DisjointObjectProperties>
+        <ObjectProperty IRI="#engineering_geological"/>
+        <ObjectProperty IRI="#geomorphological"/>
+        <ObjectProperty IRI="#geophysical"/>
+        <ObjectProperty IRI="#gydrogeological"/>
+        <ObjectProperty IRI="#meteorological"/>
+        <ObjectProperty IRI="#paleoseismological"/>
+        <ObjectProperty IRI="#seismological"/>
+        <ObjectProperty IRI="#slip_rate"/>
+        <ObjectProperty IRI="#structural_geological"/>
+        <ObjectProperty IRI="#total_activity"/>
+    </DisjointObjectProperties>
+    <SubDataPropertyOf>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location"/>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="grade"/>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="index"/>
+        <DataProperty IRI="grade"/>
+    </SubDataPropertyOf>
+    <FunctionalDataProperty>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier"/>
+    </FunctionalDataProperty>
+    <FunctionalDataProperty>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title"/>
+    </FunctionalDataProperty>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location"/>
+        <Class IRI="#Fault"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="grade"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location"/>
+        <Datatype abbreviatedIRI="rdfs:Literal"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="grade"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
 </Ontology>
 
 
