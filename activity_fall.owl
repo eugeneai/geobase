@@ -73,6 +73,9 @@
         <Class IRI="Slip"/>
     </Declaration>
     <Declaration>
+        <Class IRI="Unit"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="Width"/>
     </Declaration>
     <Declaration>
@@ -148,13 +151,28 @@
         <ObjectProperty IRI="activityDegree"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="averageSlipRate"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="cenosoic"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="elapsedTime"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="feature"/>
     </Declaration>
     <Declaration>
+        <ObjectProperty IRI="recurrenceInterval"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="slipRate"/>
+    </Declaration>
+    <Declaration>
         <ObjectProperty IRI="type"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="unit"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="value"/>
@@ -164,9 +182,6 @@
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#age"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#amplitude_slip"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#angle"/>
@@ -187,64 +202,25 @@
         <ObjectProperty IRI="#dip"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#displace"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#elapsed_time_years"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#last_activation_age"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#last_activation_age_index"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#length"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#magnitude"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#max"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#potential_ms_max"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#potential_mw_max"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#property"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#recurrence_interval"/>
-    </Declaration>
-    <Declaration>
         <ObjectProperty IRI="#slip_rate_mm_year"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#slip_sense_index"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#speed"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#strike"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#width"/>
@@ -327,6 +303,12 @@
     <Declaration>
         <NamedIndividual IRI="StructuralGeological"/>
     </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="mm"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="mmAYear"/>
+    </Declaration>
     <SubClassOf>
         <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree"/>
         <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
@@ -386,6 +368,10 @@
     <SubClassOf>
         <Class IRI="Slip"/>
         <Class IRI="Notional"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Unit"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
     </SubClassOf>
     <SubClassOf>
         <Class IRI="Width"/>
@@ -521,6 +507,14 @@
         <Class IRI="FeatureQuality"/>
         <NamedIndividual IRI="StructuralGeological"/>
     </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Unit"/>
+        <NamedIndividual IRI="mm"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Unit"/>
+        <NamedIndividual IRI="mmAYear"/>
+    </ClassAssertion>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#absoluteDeformationAge"/>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activationAge"/>
@@ -563,22 +557,42 @@
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate"/>
-        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty"/>
+        <ObjectProperty IRI="#speed"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="activityDegree"/>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qualityProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="averageSlipRate"/>
+        <ObjectProperty IRI="slipRate"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="cenosoic"/>
         <ObjectProperty IRI="#property"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="elapsedTime"/>
+        <ObjectProperty IRI="#age"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="feature"/>
         <ObjectProperty IRI="value"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
+        <ObjectProperty IRI="recurrenceInterval"/>
+        <ObjectProperty IRI="#age"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="slipRate"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
         <ObjectProperty IRI="type"/>
+        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="unit"/>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
@@ -592,10 +606,6 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#age"/>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#amplitude_slip"/>
-        <ObjectProperty IRI="#displace"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#angle"/>
@@ -622,14 +632,6 @@
         <ObjectProperty IRI="#angular"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#displace"/>
-        <ObjectProperty IRI="#property"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#elapsed_time_years"/>
-        <ObjectProperty IRI="#age"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#last_activation_age"/>
         <ObjectProperty IRI="#age"/>
     </SubObjectPropertyOf>
@@ -638,40 +640,12 @@
         <ObjectProperty IRI="#age"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#length"/>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
-        <ObjectProperty IRI="#magnitude"/>
-        <ObjectProperty IRI="#displace"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#max"/>
-        <ObjectProperty IRI="#displace"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#potential_ms_max"/>
-        <ObjectProperty IRI="#magnitude"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#potential_mw_max"/>
-        <ObjectProperty IRI="#magnitude"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#recurrence_interval"/>
-        <ObjectProperty IRI="#property"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
         <ObjectProperty IRI="#slip_rate_mm_year"/>
         <ObjectProperty IRI="#speed"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#slip_sense_index"/>
-        <ObjectProperty IRI="#displace"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#speed"/>
@@ -680,22 +654,6 @@
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#strike"/>
         <ObjectProperty IRI="#length"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
-        <ObjectProperty IRI="#amplitude_slip"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
-        <ObjectProperty IRI="#amplitude_slip"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
-    </SubObjectPropertyOf>
-    <SubObjectPropertyOf>
-        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
-        <ObjectProperty IRI="#max"/>
     </SubObjectPropertyOf>
     <SubObjectPropertyOf>
         <ObjectProperty IRI="#width"/>
@@ -723,9 +681,6 @@
         <ObjectProperty IRI="#age"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#amplitude_slip"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="#angle"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
@@ -744,55 +699,22 @@
         <ObjectProperty IRI="#dip"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#displace"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="#last_activation_age"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#last_activation_age_index"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#lateral_max_slip_per_event_m"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="#length"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
-        <ObjectProperty IRI="#magnitude"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#max"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#potential_ms_max"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#potential_mw_max"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
         <ObjectProperty IRI="#slip_rate_mm_year"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#slip_sense_index"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#speed"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#strike"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#total_cenozoic_lateral_slip"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#total_cenozoic_vertical_slip"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#total_max_slip_per_event_m"/>
-    </FunctionalObjectProperty>
-    <FunctionalObjectProperty>
-        <ObjectProperty IRI="#vertical_max_slip_per_event_m"/>
     </FunctionalObjectProperty>
     <FunctionalObjectProperty>
         <ObjectProperty IRI="#width"/>
@@ -818,7 +740,15 @@
         <Class IRI="Slip"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="elapsedTime"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="feature"/>
+        <Class IRI="#Fault"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="recurrenceInterval"/>
         <Class IRI="#Fault"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
@@ -826,7 +756,15 @@
         <Class IRI="#Feature"/>
     </ObjectPropertyDomain>
     <ObjectPropertyDomain>
+        <ObjectProperty IRI="unit"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
         <ObjectProperty IRI="value"/>
+        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#age"/>
         <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
     </ObjectPropertyDomain>
     <ObjectPropertyRange>
@@ -836,10 +774,6 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality"/>
         <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
-    </ObjectPropertyRange>
-    <ObjectPropertyRange>
-        <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty"/>
-        <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value"/>
     </ObjectPropertyRange>
     <ObjectPropertyRange>
         <ObjectProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate"/>
@@ -856,6 +790,10 @@
     <ObjectPropertyRange>
         <ObjectProperty IRI="type"/>
         <Class IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="unit"/>
+        <Class IRI="Unit"/>
     </ObjectPropertyRange>
     <SubDataPropertyOf>
         <DataProperty IRI="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location"/>
