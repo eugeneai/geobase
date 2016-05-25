@@ -13,8 +13,8 @@
   unik([H|T],L):-member(H,T),!,unik(T,L).
   unik([H|T],[H|L]):-unik(T,L).
 
-  append([],L,L).
-  append([Ah|At],B,[Ah|C]):-append(At,B,C).
+%  append([],L,L).
+%  append([Ah|At],B,[Ah|C]):-append(At,B,C).
 
 
 
@@ -50,6 +50,17 @@ geobase(STR):-  STR \= "",
 		write_solutions(N),
 		fail.
 geobase(_).
+
+geobase(STR, X, E):-  STR \= "",
+                atom_string(ATOM,STR),
+  		tokenize_atom(ATOM,LIST),               /* Returns a list of words(symbols)           */
+		filter(LIST,LIST1),           /* Removes punctuation and words to be ignored*/
+		pars(LIST1,E,Q),              /* Parses queries                            */
+		findall(A,eval(Q,A),L),
+		unik(L,L1),
+                % unit(E,U),
+		member(X,L1).
+
 
 loop(STR):-	geobase(STR).
 

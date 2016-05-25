@@ -1,3 +1,10 @@
+:-module(geobase,
+	[loaddba/0,geobase/3]
+).
+
+:- use_module(library(lists)).
+
+
 /*
 		 G E O B A S E
 		 =============
