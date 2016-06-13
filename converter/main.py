@@ -18,6 +18,8 @@ NIE=Namespace("http://www.semanticdesktop.org/ontologies/2007/01/19/nie#")
 G.bind("nie",NIE)
 OWL=Namespace("http://www.w3.org/2002/07/owl#")
 G.bind("owl",OWL)
+FOAF=Namespace("http://xmlns.com/foaf/0.1/")
+G.bind("foaf",FOAF)
 
 class GraphConstructor(object):
     """Constructs Falut data fraph
@@ -39,18 +41,17 @@ class GraphConstructor(object):
         }
 
     def gather(self, subj, **kwargs):
-        print (kwargs)
         for k,v in kwargs.items():
             NS, dp=self.__class__.LITERAL_MAP[k]
             self.g.add((subj, NS[dp],Literal(v)))
         return subj
 
     def fault(self, subj=None, **kwargs):
-#        identifier=kwargs["identif"]
         if subj==None:
             subj=BNode()
 
         self.gather(subj, **kwargs)
+        self.g.add((subj, RDF["type"], GEOB["Fault"]))
 
         return subj
 
@@ -59,9 +60,8 @@ class GraphConstructor(object):
         def pred(c):
             for i,r in enumerate(HEADER_L):
                 col=r[c]
-                r=col.strip()
-                if not r:
-                    self.S[i]
+                col=col.strip()
+                if not col:
                     continue
                 if CONCEPT.match(col):
                     self.S=self.S[:i]
@@ -69,9 +69,10 @@ class GraphConstructor(object):
                         self.S.append(self.fault())
                     else:
                         obj=BNode()
-                        print (self.S, obj, col, i)
                         subj=self.S[-1]
+                        prop=col[0].lower()+col[1:]
                         self.g.add((subj, GEOB[col.lower()], obj))
+                        self.g.add((obj, RDF["type"], GEOB[col]))
                         self.S.append(obj)
                         continue
                 elif REL.match(col):
@@ -82,16 +83,21 @@ class GraphConstructor(object):
                         ns=globals()[ns]
                         return ns[col]
                     return GEOB[col]
+                elif col.find("=")>=0:
+                    l=col.split("=")
+                    prop,val=l
+                    self.g.add((self.S[-1], GEOB[prop], GEOB[val]))
+                    continue
                 else:
                     raise ValueError("wrong entity '{}'".format(col))
 
         def col(c):
             val=row[c]
-
-#            import pdb; pdb.set_trace()
             p=pred(c)
             oval=Literal(val)
-            self.g.add((self.S[-1], p, oval))
+            subj=self.S[-1]
+            #print (subj, p, oval)
+            self.g.add((subj, p, oval))
 
         #for c, val in enumerate(row):
         #    col(c, val)
@@ -115,9 +121,13 @@ def convert():
     g=GraphConstructor(G)
 
 
-    for row in DATA:
+    for num, row in enumerate(DATA):
         g.feed(row)
-        break
+        if num % 100 == 0:
+            print (num+1)
+        #break
+
+    print ("Serialization")
 
     G.serialize(OUTPUT, format=FORMAT)
 
