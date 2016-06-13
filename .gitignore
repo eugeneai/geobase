@@ -2,3 +2,4 @@ turb_prolog/distr
 tmp/
 catalog-v*.xml
 /python3
+/*~lock.*
