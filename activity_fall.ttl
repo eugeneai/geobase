@@ -1,0 +1,875 @@
+@prefix : <http://www.w3.org/2002/07/owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#> .
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#> rdf:type :Ontology .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#absoluteDeformationAge
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#absoluteDeformationAge> rdf:type :ObjectProperty ;
+                                                                                  
+                                                                                  rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activationAge> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activation
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activation> rdf:type :ObjectProperty ;
+                                                                      
+                                                                      rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activity> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activationAge
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activationAge> rdf:type :ObjectProperty ;
+                                                                         
+                                                                         rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activation> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activity
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activity> rdf:type :ObjectProperty ;
+                                                                    
+                                                                    rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#value> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#event
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#event> rdf:type :ObjectProperty ;
+                                                                 
+                                                                 rdfs:range <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Event> ;
+                                                                 
+                                                                 rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activity> ;
+                                                                 
+                                                                 rdfs:domain :Thing .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastActivationAge
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastActivationAge> rdf:type :ObjectProperty ;
+                                                                             
+                                                                             rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activationAge> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastHistoricalEarthquake
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#lastHistoricalEarthquake> rdf:type :ObjectProperty ;
+                                                                                    
+                                                                                    rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#activation> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality> rdf:type :FunctionalProperty ,
+                                                                            :ObjectProperty ;
+                                                                   
+                                                                   rdfs:range <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> ;
+                                                                   
+                                                                   rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                   
+                                                                   rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qualityProperty> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qualityProperty
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qualityProperty> rdf:type :ObjectProperty ;
+                                                                           
+                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty> rdf:type :ObjectProperty ;
+                                                                            
+                                                                            rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                            
+                                                                            rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate> rdf:type :ObjectProperty ;
+                                                                
+                                                                rdfs:range <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                
+                                                                rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Slip> ;
+                                                                
+                                                                rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##speed> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#activityDegree
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#activityDegree> rdf:type :FunctionalProperty ,
+                                                                                           :ObjectProperty ;
+                                                                                  
+                                                                                  rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#qualityProperty> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#averageSlipRate
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#averageSlipRate> rdf:type :ObjectProperty ;
+                                                                                   
+                                                                                   rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#slipRate> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#cenosoic
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#cenosoic> rdf:type :FunctionalProperty ,
+                                                                                     :ObjectProperty ;
+                                                                            
+                                                                            rdfs:range <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Cenosoic_Slip> ;
+                                                                            
+                                                                            rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Slip> ;
+                                                                            
+                                                                            rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#elapsedTime
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#elapsedTime> rdf:type :ObjectProperty ;
+                                                                               
+                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> ;
+                                                                               
+                                                                               rdfs:domain :Thing .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#feature
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#feature> rdf:type :FunctionalProperty ,
+                                                                                    :ObjectProperty ;
+                                                                           
+                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#value> ;
+                                                                           
+                                                                           rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> ;
+                                                                           
+                                                                           rdfs:range <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Feature> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#recurrenceInterval
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#recurrenceInterval> rdf:type :ObjectProperty ;
+                                                                                      
+                                                                                      rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> ;
+                                                                                      
+                                                                                      rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#slipRate
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#slipRate> rdf:type :ObjectProperty ;
+                                                                            
+                                                                            rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#rate> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#type
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#type> rdf:type :FunctionalProperty ,
+                                                                                 :ObjectProperty ;
+                                                                        
+                                                                        rdfs:range <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> ;
+                                                                        
+                                                                        rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality> ;
+                                                                        
+                                                                        rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Feature> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#unit
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#unit> rdf:type :ObjectProperty ;
+                                                                        
+                                                                        rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                        
+                                                                        rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quality> ;
+                                                                        
+                                                                        rdfs:range <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Unit> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#value
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#value> rdf:type :ObjectProperty ;
+                                                                         
+                                                                         rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                         
+                                                                         rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##absolute_deformation_age
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##absolute_deformation_age> rdf:type :FunctionalProperty ,
+                                                                                                      :ObjectProperty ;
+                                                                                             
+                                                                                             rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> rdf:type :FunctionalProperty ,
+                                                                                 :ObjectProperty ;
+                                                                        
+                                                                        rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                        
+                                                                        rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angle
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angle> rdf:type :FunctionalProperty ,
+                                                                                   :ObjectProperty ;
+                                                                          
+                                                                          rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angular> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angular
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angular> rdf:type :FunctionalProperty ,
+                                                                                     :ObjectProperty ;
+                                                                            
+                                                                            rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##averaged_slip_rate_mm_year
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##averaged_slip_rate_mm_year> rdf:type :FunctionalProperty ,
+                                                                                                        :ObjectProperty ;
+                                                                                               
+                                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##speed> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##azimuth
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##azimuth> rdf:type :FunctionalProperty ,
+                                                                                     :ObjectProperty ;
+                                                                            
+                                                                            rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angular> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##depth
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##depth> rdf:type :FunctionalProperty ,
+                                                                                   :ObjectProperty ;
+                                                                          
+                                                                          rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##dip
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##dip> rdf:type :FunctionalProperty ,
+                                                                                 :ObjectProperty ;
+                                                                        
+                                                                        rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##angular> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##last_activation_age
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##last_activation_age> rdf:type :FunctionalProperty ,
+                                                                                                 :ObjectProperty ;
+                                                                                        
+                                                                                        rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##last_activation_age_index
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##last_activation_age_index> rdf:type :FunctionalProperty ,
+                                                                                                       :ObjectProperty ;
+                                                                                              
+                                                                                              rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##age> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length> rdf:type :FunctionalProperty ,
+                                                                                    :ObjectProperty ;
+                                                                           
+                                                                           rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#quantityProperty> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##property> rdf:type :ObjectProperty .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##slip_rate_mm_year
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##slip_rate_mm_year> rdf:type :FunctionalProperty ,
+                                                                                               :ObjectProperty ;
+                                                                                      
+                                                                                      rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##speed> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##speed
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##speed> rdf:type :FunctionalProperty ,
+                                                                                   :ObjectProperty ;
+                                                                          
+                                                                          rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##strike
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##strike> rdf:type :FunctionalProperty ,
+                                                                                    :ObjectProperty ;
+                                                                           
+                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##width
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##width> rdf:type :FunctionalProperty ,
+                                                                                   :ObjectProperty ;
+                                                                          
+                                                                          rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##length> .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property> rdf:type :DatatypeProperty .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#identifier> rdf:type :DatatypeProperty ,
+                                                                               :FunctionalProperty ;
+                                                                      
+                                                                      rdfs:range xsd:string ;
+                                                                      
+                                                                      rdfs:domain :Thing .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#location> rdf:type :DatatypeProperty ;
+                                                                    
+                                                                    rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property> ;
+                                                                    
+                                                                    rdfs:domain <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> ;
+                                                                    
+                                                                    rdfs:range rdfs:Literal .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#title> rdf:type :DatatypeProperty ,
+                                                                          :FunctionalProperty ;
+                                                                 
+                                                                 rdfs:range xsd:string ;
+                                                                 
+                                                                 rdfs:domain :Thing .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#grade
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#grade> rdf:type :DatatypeProperty ;
+                                                                         
+                                                                         rdfs:domain <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> ;
+                                                                         
+                                                                         rdfs:subPropertyOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#data_property> ;
+                                                                         
+                                                                         rdfs:range xsd:integer .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#index
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#index> rdf:type :DatatypeProperty ;
+                                                                         
+                                                                         rdfs:subPropertyOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#grade> .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> rdf:type :Class ;
+                                                                          
+                                                                          rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Event
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Event> rdf:type :Class ;
+                                                                 
+                                                                 rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter> rdf:type :Class ;
+                                                                          
+                                                                          rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> rdf:type :Class .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Rate
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Rate> rdf:type :Class ;
+                                                                
+                                                                rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Strike
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Strike> rdf:type :Class ;
+                                                                  
+                                                                  rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angular> .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> rdf:type :Class .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angle
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angle> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angular> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angular
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angular> rdf:type :Class ;
+                                                                           
+                                                                           rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Azimuth
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Azimuth> rdf:type :Class ;
+                                                                           
+                                                                           rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Angular> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Cenosoic_Slip
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Cenosoic_Slip> rdf:type :Class ;
+                                                                                 
+                                                                                 rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Slip> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Depth
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Depth> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> rdf:type :Class ;
+                                                                                  
+                                                                                  rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Length
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Length> rdf:type :Class ;
+                                                                          
+                                                                          rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear> rdf:type :Class ;
+                                                                          
+                                                                          rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Notional
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Notional> rdf:type :Class ;
+                                                                            
+                                                                            rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Slip
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Slip> rdf:type :Class ;
+                                                                        
+                                                                        rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Notional> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Unit
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Unit> rdf:type :Class ;
+                                                                        
+                                                                        rdfs:subClassOf <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Width
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Width> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Linear> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Associated_CSS
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Associated_CSS> rdf:type :Class ;
+                                                                                   
+                                                                                   rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Associated_IGGSS
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Associated_IGGSS> rdf:type :Class ;
+                                                                                     
+                                                                                     rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Compiler
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Compiler> rdf:type :Class ;
+                                                                             
+                                                                             rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Date
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Date> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> rdf:type :Class .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Feature
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Feature> rdf:type :Class ;
+                                                                            
+                                                                            rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Notional> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Last_historical_earthquake
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Last_historical_earthquake> rdf:type :Class ;
+                                                                                               
+                                                                                               rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Location
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Location> rdf:type :Class ;
+                                                                             
+                                                                             rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Name
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Name> rdf:type :Class ;
+                                                                         
+                                                                         rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Reliability_class
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Reliability_class> rdf:type :Class ;
+                                                                                      
+                                                                                      rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Info> .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Seismic_activity_of_fault
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Seismic_activity_of_fault> rdf:type :Class ;
+                                                                                              
+                                                                                              rdfs:subClassOf <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault> .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AC
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AC> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> ,
+                                                                       :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AnomalyHight
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#AnomalyHight> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                                 :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#High
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#High> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                         :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Increased
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Increased> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                              :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LS
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LS> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality> ,
+                                                                       :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LateralMaxSlip
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#LateralMaxSlip> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter> ,
+                                                                                   :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#MaxSlip
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#MaxSlip> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter> ,
+                                                                            :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Middle
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Middle> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                           :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#None
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#None> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                         :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#TotalMaxSlip
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#TotalMaxSlip> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter> ,
+                                                                                 :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#VerticalMaxSlip
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#VerticalMaxSlip> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#EventParameter> ,
+                                                                                    :NamedIndividual .
+
+
+
+###  http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Weak
+
+<http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Weak> rdf:type <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#ActivityDegree> ,
+                                                                         :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#EngineeringGeological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#EngineeringGeological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                                  :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                       :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geomorphological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geomorphological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                             :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geophysical
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Geophysical> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                        :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Meteorological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Meteorological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                           :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Paleoseismological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Paleoseismological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                               :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Seismological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Seismological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                          :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#StructuralGeological
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#StructuralGeological> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#FeatureQuality> ,
+                                                                                                 :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#mm
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#mm> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Unit> ,
+                                                                               :NamedIndividual .
+
+
+
+###  http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#mmAYear
+
+<http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#mmAYear> rdf:type <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault#Unit> ,
+                                                                                    :NamedIndividual .
+
+
+
+
+
+#################################################################
+#
+#    General axioms
+#
+#################################################################
+
+
+[ rdf:type :AllDisjointClasses ;
+  :members ( <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Qality>
+             <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#Value>
+             <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Fault>
+             <http://www.semanticweb.org/bernard_black/ontologies/2016/3/fault##Feature>
+           )
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
